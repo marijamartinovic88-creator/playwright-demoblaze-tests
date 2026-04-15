@@ -57,13 +57,13 @@ test.beforeEach(async ({ page }) => {
 });
 
 
-test.afterEach(async ({ homePage }) => {
- if (await homePage.logoutLink.isVisible()) {
-    await homePage.logout();
-    await homePage.assertLoggedOut();
-  }
+//test.afterEach(async ({ homePage }) => {
+ //if (await homePage.logoutLink.isVisible()) {
+  //  await homePage.logout();
+   // await homePage.assertLoggedOut();
+  //}
 
-});
+//});
 
 
 export { test, expect };
