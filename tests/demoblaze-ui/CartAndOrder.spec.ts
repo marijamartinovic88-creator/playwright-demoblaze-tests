@@ -1,6 +1,6 @@
-import { ProductPage } from '../pages/ProductPage';
+import { ProductPage } from '../../pages/ProductPage';
 import { test, expect } from './BaseTest';
-import  type { OrderData }  from '../pages/PlaceOrderPage';
+import  type { OrderData }  from '../../pages/PlaceOrderPage';
 
 
 test("TC_07 - Open cart page", async ({ page, homePage, productPage, cartPage}) => {

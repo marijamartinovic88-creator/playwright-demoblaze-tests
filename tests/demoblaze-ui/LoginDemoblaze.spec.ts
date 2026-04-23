@@ -1,4 +1,4 @@
-import { LoginPage } from '../pages/LoginPage';
+import { LoginPage } from '../../pages/LoginPage';
 import { test, expect } from './BaseTest';
 //Uvozimo proširenu test funkciju iz BaseTest
 

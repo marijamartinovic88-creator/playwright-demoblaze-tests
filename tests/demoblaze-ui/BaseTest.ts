@@ -1,10 +1,10 @@
 import { test as base, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { HomePage } from '../pages/HomePage';
-import { SignUpPage } from '../pages/SignUpPage';
-import { ProductPage } from '../pages/ProductPage';
-import { CartPage } from '../pages/CartPage';
-import { PlaceOrderPage } from '../pages/PlaceOrderPage';
+import { LoginPage } from '../../pages/LoginPage';
+import { HomePage } from '../../pages/HomePage';
+import { SignUpPage } from '../../pages/SignUpPage';
+import { ProductPage } from '../../pages/ProductPage';
+import { CartPage } from '../../pages/CartPage';
+import { PlaceOrderPage } from '../../pages/PlaceOrderPage';
 //import { BasePage } from '../pages/BasePage';
 
 

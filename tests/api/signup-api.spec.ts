@@ -3,7 +3,8 @@ import { test, expect } from '@playwright/test';
 const BASE_URL = "https://api.demoblaze.com";
 
 
-test.describe('Signup API', () => { test('TC_API_SINGUP_01 - Sign up with new user', async ({ request }) => {
+test.describe('Signup API', () => { 
+    test('TC_API_SIGNUP_01 - Sign up with new user', async ({ request }) => {
 
     const password = Buffer.from('test1234').toString('base64');
 
@@ -25,7 +26,7 @@ test.describe('Signup API', () => { test('TC_API_SINGUP_01 - Sign up with new us
 
 
 
-test('TC_API_SIGNUP_02 - Sign up with existinng user', async ({ request }) => {
+test('TC_API_SIGNUP_02 - Sign up with existing user', async ({ request }) => {
     const password = Buffer.from('test1234').toString('base64');
 
     const response = await request.post(`${BASE_URL}/signup`, {

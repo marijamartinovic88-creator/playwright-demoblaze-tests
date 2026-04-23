@@ -31,6 +31,7 @@ export class HomePage extends BasePage {
 
     // Provjerava da je Home stranica učitana.
 // Ne čekamo cijelu stranicu, već ključni element (products logo),
+
   async homePageLoaded() {
   await this.waitForAppReady(this.productsLogo);
 }
@@ -55,6 +56,12 @@ async openProduct(productName: string) {
 async openLogIn() {
 await this.click(this.logInLink);
 }
+
+
+async openSignup() {
+await this.click(this.signUpLink);
+}
+
 
 
 async logout() {
