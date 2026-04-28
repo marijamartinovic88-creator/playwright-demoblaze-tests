@@ -57,6 +57,7 @@ async openLogIn() {
 await this.click(this.logInLink);
 }
 
+//klikni na signup
 
 async openSignup() {
 await this.click(this.signUpLink);

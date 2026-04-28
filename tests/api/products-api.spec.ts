@@ -57,7 +57,14 @@ test.describe('Products API', () => {
         });
 
         // TODO: should return 400 after backend fix
-        // current behavior: unknown - needs investigation
+        // current behavior: returns 500 Internnal Server Error
+
+        const body = await response.text();
+
+        expect(response.status()).toBe(500);
+        expect(body).toContain('Internal Server Error');
+
+
         console.log("Status:", response.status());
         console.log("Body:", await response.text());
     });
