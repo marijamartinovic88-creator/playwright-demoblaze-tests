@@ -5,8 +5,8 @@ on:
   pull_request:
     branches: [ main, master ]
   schedule: 
-    - cron: "0 6 * * *"
-      timezone: "Europe/Vienna"
+    - cron: "0 4 * * *"
+    
   workflow_dispatch:
 jobs:
   test:
