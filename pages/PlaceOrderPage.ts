@@ -1,6 +1,6 @@
 import { Page, expect, Locator } from '@playwright/test';
 import { BasePage } from './BasePage';
-//import { allowedNodeEnvironmentFlags } from 'node:process';
+
 
 //Type je ime za tip podataka 
 //(npr. string, number, funkcija ili objekat).

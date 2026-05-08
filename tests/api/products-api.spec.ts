@@ -24,6 +24,11 @@ test.describe('Products API', () => {
         expect(typeof firstProduct.price).toBe('number');
     });
 
+
+    // Verify that the /view endpoint returns correct product details
+// for a valid product id, including product structure and values.
+//provjera da backend vraća tačne podatke
+
     test('TC_API_PRODUCT_02 - Get product by id', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/view`, {
             data: { id: "1" }
@@ -40,6 +45,8 @@ test.describe('Products API', () => {
         expect(body.img).toContain('.jpg');
     });
 
+
+
     test('TC_API_PRODUCT_03 - Get product with non-existing id', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/view`, {
             data: { id: "99999" }
@@ -51,22 +58,21 @@ test.describe('Products API', () => {
         console.log("Body:", await response.text());
     });
 
-    test('TC_API_PRODUCT_04 - Get product with empty id', async ({ request }) => {
-        const response = await request.post(`${BASE_URL}/view`, {
-            data: { id: "" }
-        });
+   test('TC_API_PRODUCT_04 - Get product with empty id', async ({ request }) => {
+  const response = await request.post(`${BASE_URL}/view`, {
+    data: { id: "" }
+  });
 
-        // TODO: should return 400 after backend fix
-        // current behavior: returns 500 Internnal Server Error
+  // TODO: should return 400 after backend fix
+  // Current behavior: returns 500 Internal Server Error
 
-        const body = await response.text();
+  const body = await response.text();
 
-        expect(response.status()).toBe(500);
-        expect(body).toContain('Internal Server Error');
+  console.log("Status:", response.status());
+  console.log("Body:", body);
 
-
-        console.log("Status:", response.status());
-        console.log("Body:", await response.text());
-    });
+  expect(response.status()).toBe(500);
+  expect(body).toContain('Internal Server Error');
+});
 
 });

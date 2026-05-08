@@ -28,7 +28,7 @@ test.describe('Login API', () => { test('TC_API_LOGIN_01 - Log in with valid cre
 
 
 
-//Should return error for innvalid password
+
 
 test("TC_API_LOGIN_02 - Log in with invalid password", async ({ request }) => {
 

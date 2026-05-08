@@ -5,40 +5,58 @@ const BASE_URL = "https://api.demoblaze.com";
 
 test.describe('Cart API', () => {
 
-    test('TC_API_CART_01 - Add product to cart', async ({ request }) => {
-        const token = await getAuthToken(request);
+    test('TC_API_CART - Add and view cart', async ({ request }) => {
+  const token = await getAuthToken(request);
 
-        const response = await request.post(`${BASE_URL}/addtocart`, {
-            data: {
-                id: "dr5ghbnjk",
-                cookie: token,
-                prod_id: 1,
-                flag: false
-            }
-        });
+  // 1️⃣ ADD TO CART
+  const addResponse = await request.post(`${BASE_URL}/addtocart`, {
+    data: {
+      id: Date.now().toString(),
+      cookie: token,
+      prod_id: 1,
+      flag: false
+    }
+  });
 
-        expect(response.status()).toBe(200);
-    });
+  console.log('Add status:', addResponse.status());
 
-    test('TC_API_CART_02 - View cart', async ({ request }) => {
-        const token = await getAuthToken(request);
+  const addBody = await addResponse.text();
+  console.log('Add Body:', addBody);
 
-        const response = await request.post(`${BASE_URL}/viewcart`, {
-            data: {
-                cookie: token,
-                flag: false
-            }
-        });
+  expect(addResponse.status()).toBe(200);
 
-        expect(response.status()).toBe(200);
+  // 2️⃣ VIEW CART
+  const viewResponse = await request.post(`${BASE_URL}/viewcart`, {
+    data: {
+      cookie: token,
+      flag: false
+    }
+  });
 
-        const body = await response.json();
-        expect(body.Items).toBeTruthy();
-        expect(body.Items.length).toBeGreaterThan(0);
+  console.log('View status:', viewResponse.status());
 
-        const hasProduct = body.Items.some((item: any) => item.prod_id === 1);
-        expect(hasProduct).toBe(true);
-    });
+  
+
+  expect(viewResponse.status()).toBe(200);
+
+  const body = await viewResponse.json();
+
+  console.log('Body:', body);
+
+
+  expect(body.Items).toBeTruthy();
+  expect(body.Items.length).toBeGreaterThan(0);
+
+  const hasProduct = body.Items.some((item: any) => item.prod_id === 1);
+  expect(hasProduct).toBe(true);
+   });
+
+
+
+   // BUG / SECURITY ISSUE:
+   // API returns status 200 OK and cart Items even when no authentication token/cookie is provided.
+   // Expected behavior: API should return 401 Unauthorized.
+   
 
     test('TC_API_CART_03 - View cart without token', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/viewcart`, {

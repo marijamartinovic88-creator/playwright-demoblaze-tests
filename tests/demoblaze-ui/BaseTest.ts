@@ -12,6 +12,7 @@ import { PlaceOrderPage } from '../../pages/PlaceOrderPage';
 
 
   //Navodimo promenljive i kog su tipa, koristimo ih kasnije u ovom fajlu
+  
 type Fixtures = {
   loginPage: LoginPage;
   homePage: HomePage;
@@ -24,6 +25,7 @@ type Fixtures = {
 
 
   //Proširujemo test sa objektima pages klasa, koristimo Fixtures da se zna kog su tipa loginPage, homePage...
+
 const test = base.extend<Fixtures>({
   loginPage: async function ({ page }, use) {
     await use(new LoginPage(page));
